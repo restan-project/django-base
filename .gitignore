@@ -4,3 +4,8 @@ staticfiles
 local_settings.py
 db.sqlite3
 *.py[co]$
+.idea/vcs.xml
+.idea/modules.xml
+.idea/misc.xml
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/django-base.iml
