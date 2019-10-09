@@ -1,4 +1,6 @@
 {% load static %}
+<style>/* del start 2019.10.09 tanaka.t
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -29,4 +31,24 @@
   <button type="button" align="right">追加</button>
 </body>
 
+</html>
+
+del end 2019.10.09 tanaka.t */</style>
+
+:::html
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8">
+</head>
+<body>
+<h1>簡易ブックマーク</h1>
+<p>${message}</p>
+<form method="post" action="templatebbs.py">
+  タイトル : <input type="text" name="title" size="40" value="${title}" /><br />
+  URL : <input type="text" name="url" size="40" value="${url}" /><br />
+  <input type="hidden" name="post" value="1" />
+  <input type="submit" />
+</form>
+${bookmarks}
+</body>
 </html>
