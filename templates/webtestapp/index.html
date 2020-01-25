@@ -1,0 +1,25 @@
+<!doctype html>
+{% load staticfiles %}
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>テストWebアプリ</title>
+    <link rel="stylesheet" href="{% static "css/style.css" %}"/>
+    <script src="{% static 'javascript/sample.js' %}"></script>
+  </head>
+  <body>
+    <h1>index.html表示してます</h1>
+    <img src="{% static "images/testimg.png" %}" alt="表示できません">
+
+    <p>{{ insert_something }}</p>
+    <p>作成者は<b id='test'>{{ name }}</b>です。</p>
+
+    <p>{{insert_forms|safe}}</p>
+    <form action="{% url 'webtestapp:index' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="送信">
+    </form>
+
+  </body>
+</html>
