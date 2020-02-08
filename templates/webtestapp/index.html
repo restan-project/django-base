@@ -2,6 +2,64 @@
 {% load staticfiles %}
 <html lang="ja">
 <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+$( function() {
+
+$("#button1").click(
+function(){
+	$("#span6").text("データ取得中です");
+
+	// 1.$.ajaxメソッドで通信を行います。
+	//  20行目のdataは、フォームの内容をserialize()している
+	//  →serialize()の内容は、cs1=custom1&cs2=custom2
+	$.ajax({
+		url:"http://127.0.0.1:8000/api/", // 通信先のURL
+		type:"POST",		// 使用するHTTPメソッド
+		dataType:"json", // 応答のデータの種類
+						// (xml/html/script/json/jsonp/text)
+		timespan:1000 		// 通信のタイムアウトの設定(ミリ秒)
+
+		// 2. doneは、通信に成功した時に実行される
+		//  引数のdata1は、通信で取得したデータ
+		//  引数のtextStatusは、通信結果のステータス
+		//  引数のjqXHRは、XMLHttpRequestオブジェクト
+		}).done(function(data1,textStatus,jqXHR) {
+				$("#span1").text(jqXHR.status); //例：200
+				$("#span2").text(textStatus); //例：success
+
+				// 3. キーを指定して値を表示
+				$("#span4").text(data1["form"]["cs1"]);
+
+				// 4. JavaScriptオブジェクトをJSONに変換
+				var data2 = JSON.stringify(data1);
+				console.log(data2); //コンソールにJSONが表示される
+
+				// 5.JSONをJavaScriptオブジェクトにし、
+				// キーを指定して値(httpbin.org)を表示
+				var data3 = JSON.parse(data2);
+				$("#span5").text(data3["headers"]["Host"]);
+
+		// 6. failは、通信に失敗した時に実行される
+		}).fail(function(jqXHR, textStatus, errorThrown ) {
+				$("#span1").text(jqXHR.status); //例：404
+				$("#span2").text(textStatus); //例：error
+				$("#span3").text(errorThrown); //例：NOT FOUND
+
+		// 7. alwaysは、成功/失敗に関わらず実行される
+		}).always(function(){
+				$("#span6").text("complete");
+
+	});
+});
+});
+</script>
     <meta charset="utf-8">
     <title>テストWebアプリ</title>
     <link rel="stylesheet" href="{% static " css/style.css" %}"/>
@@ -32,9 +90,9 @@
 <form action="{% url 'webtestapp:index' %}" method="post">
     {% csrf_token %}
     {{ form }}
-    <input type="submit" value="送信">
+    <input type="submit" value="送信" class="btn btn-primary">
 </form>
-
+<input type="button" value="test" id="button1">
 <p class="abc">gametitle="マンカラ"</p>
 <table class="mankara_board">
     <tr>

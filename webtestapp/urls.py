@@ -5,4 +5,5 @@ app_name='webtestapp'
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('api/', views.detail, name='detail'),
 ]
