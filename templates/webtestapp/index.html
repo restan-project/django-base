@@ -1,25 +1,63 @@
 <!doctype html>
 {% load staticfiles %}
 <html lang="ja">
-  <head>
+<head>
     <meta charset="utf-8">
     <title>テストWebアプリ</title>
-    <link rel="stylesheet" href="{% static "css/style.css" %}"/>
+    <link rel="stylesheet" href="{% static " css/style.css" %}"/>
     <script src="{% static 'javascript/sample.js' %}"></script>
-  </head>
-  <body>
-    <h1>index.html表示してます</h1>
-    <img src="{% static "images/testimg.png" %}" alt="表示できません">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <!--logo画像-->
+    <h1 class="logo">
+    <img src="{% static './img/logo.png' %}">
+    </h1>
+    <div>
+        <ul>
+            <li><a href="">menu1</a></li>
+            <li><a href="">menu2</a></li>
+            <li><a href="">menu3</a></li>
+            <li><a href="">menu4</a></li>
+            <li><a href="">menu5</a></li>
+        </ul>
+    </div>
+</head>
+<body>
+<h1>index.html表示してます</h1>
+<img src="{% static " images/testimg.png" %}" alt="表示できません">
 
-    <p>{{ insert_something }}</p>
-    <p>作成者は<b id='test'>{{ name }}</b>です。</p>
+<p>{{ insert_something }}</p>
+<p>作成者は<b id='test'>{{ name }}</b>です。</p>
 
-    <p>{{insert_forms|safe}}</p>
-    <form action="{% url 'webtestapp:index' %}" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="送信">
-    </form>
+<p>{{insert_forms|safe}}</p>
+<form action="{% url 'webtestapp:index' %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="送信">
+</form>
 
-  </body>
+<p class="abc">gametitle="マンカラ"</p>
+<table class="mankara_board">
+    <tr>
+        <td width="10px">player1</td>
+        <td>{{ name }}</td>
+        <td>{{ name }}</td>
+        <td>{{ name }}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>{{ name }}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>{{ name }}</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>{{ name }}</td>
+        <td>{{ name }}</td>
+        <td>{{ name }}</td>
+        <td>player2</td>
+    </tr>
+</table>
+</body>
 </html>
