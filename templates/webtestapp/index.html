@@ -24,23 +24,9 @@
   <a href="#" class="navbar-brand">resutan-project</a>
 </nav>
 
-<h1>index.html表示してます</h1>
-<img src="{% static " images/testimg.png" %}" alt="表示できません">
-
-<p>{{ insert_something }}</p>
-<p>作成者は<b id='test'>{{ name }}</b>です。</p>
-
-<p>{{insert_forms|safe}}</p>
-<form action="{% url 'webtestapp:index' %}" method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="送信" class="btn btn-primary">
-</form>
-<input type="button" value="test" id="button1">
-<p class="abc">gametitle="マンカラ"</p>
+<p class="abc">マンカラ</p>
 <table class="mankara_board">
     <tr>
-        <td width="10px">player1</td>
         <td>{{ name }}</td>
         <td>{{ name }}</td>
         <td>{{ name }}</td>
@@ -58,7 +44,6 @@
         <td>{{ name }}</td>
         <td>{{ name }}</td>
         <td>{{ name }}</td>
-        <td>player2</td>
     </tr>
 </table>
 </body>
