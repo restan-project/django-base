@@ -1,7 +1,19 @@
-.mainContent {
-  background-color: #1d2124;
+html {
+  height: 100%;
 }
 
-.gameboard{
-  margin-top: 100px;
+body {
+  height: 100%;
 }
+
+.mainContent {
+  height: 100%;
+  /*background-color: #1d2124;*/
+}
+
+.gameBoard{
+  text-aline: center;
+  margin: 100px 500px;
+}
+
+
